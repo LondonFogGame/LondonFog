@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4494996, g: 0.49649495, b: 0.5591458, a: 1}
+  m_IndirectSpecularColor: {r: 0.4494995, g: 0.496495, b: 0.55914545, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -424,10 +424,10 @@ GameObject:
   m_Component:
   - component: {fileID: 191480408}
   - component: {fileID: 191480407}
-  - component: {fileID: 191480406}
   - component: {fileID: 191480405}
   - component: {fileID: 191480409}
   - component: {fileID: 191480410}
+  - component: {fileID: 191480406}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -466,8 +466,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!136 &191480406
-CapsuleCollider:
+--- !u!64 &191480406
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -475,10 +475,11 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &191480407
 MeshFilter:
   m_ObjectHideFlags: 0
