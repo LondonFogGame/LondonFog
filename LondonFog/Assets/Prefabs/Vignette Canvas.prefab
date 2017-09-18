@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 223525445734181050}
   - component: {fileID: 114783268015820332}
   - component: {fileID: 114362489538299600}
+  - component: {fileID: 114658055121237798}
   m_Layer: 5
   m_Name: Vignette Canvas
   m_TagString: Untagged
@@ -133,6 +134,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114658055121237798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1793395744144068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ec193e34c979745be3f525699a7c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114783268015820332
 MonoBehaviour:
   m_ObjectHideFlags: 1
