@@ -9,8 +9,8 @@ public class CharacterController : MonoBehaviour {
     public Rigidbody rb;
     // Use this for initialization
     void Start () {
-        speed = 5;
-        sensitivity = 10;
+        speed = 5.5f;
+        sensitivity = 10f;
         rb = GetComponent<Rigidbody>();
        
     }
@@ -20,9 +20,12 @@ public class CharacterController : MonoBehaviour {
         
 
         //smooth jumping animation
-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y<=1.2)
+        if (Input.GetKeyDown(KeyCode.Space))// && rb.velocity.y<=0)
         {
-            rb.AddForce(transform.up * (speed - rb.velocity.y), ForceMode.Impulse);
+            if (rb.velocity.y <=.01)
+            {
+                rb.AddForce(transform.up * (speed-rb.position.y), ForceMode.Impulse);
+            }
         }
 
 
