@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Alpha: 0.5
+    - _Alpha: 0.6
     - _AlphaSub: 0.05
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -63,7 +63,7 @@ Material:
     - _DstBlend: 0
     - _EmissionScaleUI: 0
     - _Glossiness: 0.5
-    - _Intensity: 1.1
+    - _Intensity: 0.1
     - _Metallic: 0.937
     - _Mode: 0
     - _OcclusionStrength: 1
