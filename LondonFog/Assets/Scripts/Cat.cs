@@ -31,18 +31,20 @@ public class Cat : MonoBehaviour
         if (targetDistance < lookDistance)
         {
             LookAwayFromPlayer(path[index]);
-
-            if (transform.position != path[index].position)
-                Move(path[index]);
-            else
-            {
-                if (index != path.Count - 1)
-                    index++;
-            }
+            Move(path[index]);
         }
         else
         {
             LookAtPlayer();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Point"))
+        {
+            if (index != path.Count - 1)
+                index++;
         }
     }
 
