@@ -10,6 +10,14 @@ public class CharacterController : MonoBehaviour {
 
 	public bool interactKeyPressed = false;
 	public bool touchCube = false;
+
+    public bool groundContact = false;
+
+    public bool touchSphere = false;
+    public bool hasKey = false;
+
+    public bool atGate = false;
+
 	//public bool pushing = false;
 	private GameObject inContact;
 
@@ -26,19 +34,29 @@ public class CharacterController : MonoBehaviour {
         
 
         //smooth jumping animation
-        if (Input.GetKeyDown(KeyCode.Space))// && rb.velocity.y<=0)
+        if (Input.GetKeyDown(KeyCode.Space) && groundContact)// && rb.velocity.y<=0)
         {
-            if (rb.velocity.y <=.01)
-            {
-                rb.AddForce(transform.up * (speed-rb.position.y), ForceMode.Impulse);
-            }
+            print("space");
+            rb.AddForce(transform.up * (speed), ForceMode.Impulse);
+            
         }
 
 
+        if(Input.GetKey(KeyCode.E) && hasKey && atGate)
+        {
+            Vector3 res = new Vector3(15.52327f, 3.342756f, -0.7637978f);
+            inContact.GetComponent<Rigidbody>().MovePosition(res);
+        }
+
 		if (Input.GetKey (KeyCode.E)) 
 		{
+            if(touchSphere == true)
+            {
+                hasKey = true;
+            }
 			interactKeyPressed = true;
-		} else 
+		}
+        else 
 		{
 			interactKeyPressed = false;
 		}
@@ -63,7 +81,13 @@ public class CharacterController : MonoBehaviour {
 			inContact.GetComponent<Rigidbody>().MovePosition(otherPos + res3);
 		}
 
+        if (touchSphere)
+        {
+            hasKey = true;
+        }
         
+        
+
         if (Input.GetMouseButtonDown(0))
             Cursor.lockState = CursorLockMode.Locked;
         
@@ -74,21 +98,75 @@ public class CharacterController : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "cube") 
 		{
+            groundContact = true;
 			touchCube = true;
 			inContact = other.gameObject;
 		}
-
-	}
+        if(other.gameObject.name == "GateKey")
+        {
+            touchSphere = true;
+            inContact = other.gameObject;
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.name == "Ground")
+        {
+            groundContact = true;
+            inContact = other.gameObject;
+        }
+        if (other.gameObject.name == "Gate")
+        {
+            atGate = true;
+            inContact = other.gameObject;
+        }
+        if (other.gameObject.name == "LargePatch")
+        {
+            print("GROUND");
+            groundContact = true;
+            inContact = other.gameObject;
+        }
+        if (other.gameObject.name == "SmallPatch")
+        {
+            print("GROUND");
+            groundContact = true;
+            inContact = other.gameObject;
+        }
+    }
 
 	void OnCollisionExit(Collision other)
-	{
+    {
+        if (other.gameObject.name == "LargePatch")
+        {
+            groundContact = false;
+            inContact = null;
+        }
+        if (other.gameObject.name == "SmallPatch")
+        {
+            groundContact = false;
+            inContact = null;
+        }
+        if (other.gameObject.name == "Gate")
+        {
+            atGate = false;
+            inContact = null;
+        }
 		if (other.gameObject.tag == "cube") 
 		{
+            groundContact = false;
 			touchCube = false;
 			inContact = null;
-		}
+        }
+        if (other.gameObject.name == "GateKey")
+        {
+            touchCube = false;
+            inContact = null;
+        }
+        if (other.gameObject.name == "Ground")
+        {
+            groundContact = false;
+            inContact = null;
+        }
 
-	}
+    }
 
 
 }
