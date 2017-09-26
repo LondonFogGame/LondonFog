@@ -23,8 +23,6 @@ public class CharacterController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        speed = 5.5f;
-        sensitivity = 10f;
         rb = GetComponent<Rigidbody>();
        
     }
@@ -108,7 +106,7 @@ public class CharacterController : MonoBehaviour {
             inContact = other.gameObject;
             Destroy(other.gameObject);
         }
-        if (other.gameObject.name == "Ground")
+        if (other.gameObject.tag == "Ground")
         {
             groundContact = true;
             inContact = other.gameObject;

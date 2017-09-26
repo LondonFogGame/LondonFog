@@ -6,6 +6,7 @@ TagManager:
   tags:
   - cube
   - Point
+  - Ground
   layers:
   - Default
   - TransparentFX
