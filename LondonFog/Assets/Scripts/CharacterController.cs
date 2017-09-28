@@ -23,7 +23,7 @@ public class CharacterController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        speed = 5.5f;
+        speed = 4.5f;
         sensitivity = 10f;
         rb = GetComponent<Rigidbody>();
        
@@ -108,8 +108,9 @@ public class CharacterController : MonoBehaviour {
             inContact = other.gameObject;
             Destroy(other.gameObject);
         }
-        if (other.gameObject.name == "Ground")
+        if (other.gameObject.tag == "Ground")
         {
+            print("ground");
             groundContact = true;
             inContact = other.gameObject;
         }
@@ -118,15 +119,13 @@ public class CharacterController : MonoBehaviour {
             atGate = true;
             inContact = other.gameObject;
         }
-        if (other.gameObject.name == "LargePatch")
+        if (other.gameObject.tag == "LargePatch")
         {
-            print("GROUND");
             groundContact = true;
             inContact = other.gameObject;
         }
-        if (other.gameObject.name == "SmallPatch")
+        if (other.gameObject.tag == "SmallPatch")
         {
-            print("GROUND");
             groundContact = true;
             inContact = other.gameObject;
         }
@@ -134,12 +133,12 @@ public class CharacterController : MonoBehaviour {
 
 	void OnCollisionExit(Collision other)
     {
-        if (other.gameObject.name == "LargePatch")
+        if (other.gameObject.tag == "LargePatch")
         {
             groundContact = false;
             inContact = null;
         }
-        if (other.gameObject.name == "SmallPatch")
+        if (other.gameObject.tag == "SmallPatch")
         {
             groundContact = false;
             inContact = null;
@@ -160,7 +159,8 @@ public class CharacterController : MonoBehaviour {
             touchCube = false;
             inContact = null;
         }
-        if (other.gameObject.name == "Ground")
+        
+        if (other.gameObject.tag == "Ground")
         {
             groundContact = false;
             inContact = null;
