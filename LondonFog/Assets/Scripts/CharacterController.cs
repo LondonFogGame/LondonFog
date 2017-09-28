@@ -23,8 +23,11 @@ public class CharacterController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+<<<<<<< HEAD
         speed = 4.5f;
         sensitivity = 10f;
+=======
+>>>>>>> origin/master
         rb = GetComponent<Rigidbody>();
        
     }
