@@ -55,11 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-<<<<<<< HEAD:LondonFog/Assets/Shaders and Materials/Materials/fogmaterial.mat
-    - _Alpha: 0.3
-=======
-    - _Alpha: 0.6
->>>>>>> origin/master:LondonFog/Assets/LazyFog/Materials/fogmaterial.mat
+    - _Alpha: 0.2
     - _AlphaSub: 0.05
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -67,26 +63,17 @@ Material:
     - _DstBlend: 0
     - _EmissionScaleUI: 0
     - _Glossiness: 0.5
-    - _Intensity: 0.1
+    - _Intensity: 0.6
     - _Metallic: 0.937
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-<<<<<<< HEAD:LondonFog/Assets/Shaders and Materials/Materials/fogmaterial.mat
-    - _Pow: 0.1
-    - _Scale: 0.5
-=======
     - _Pow: 0.6
-    - _Scale: 0.1
->>>>>>> origin/master:LondonFog/Assets/LazyFog/Materials/fogmaterial.mat
+    - _Scale: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-<<<<<<< HEAD:LondonFog/Assets/Shaders and Materials/Materials/fogmaterial.mat
-    - _Color: {r: 0.78676474, g: 0.776232, b: 0.40495244, a: 1}
-=======
-    - _Color: {r: 0.6691177, g: 0.6115709, b: 0.14759947, a: 1}
->>>>>>> origin/master:LondonFog/Assets/LazyFog/Materials/fogmaterial.mat
+    - _Color: {r: 0.7352941, g: 0.7132949, b: 0.41630623, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}

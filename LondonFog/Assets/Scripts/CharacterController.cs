@@ -23,11 +23,8 @@ public class CharacterController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-<<<<<<< HEAD
         speed = 4.5f;
         sensitivity = 10f;
-=======
->>>>>>> origin/master
         rb = GetComponent<Rigidbody>();
        
     }
@@ -37,7 +34,7 @@ public class CharacterController : MonoBehaviour {
         
 
         //smooth jumping animation
-        if (Input.GetKeyDown(KeyCode.Space) && groundContact)// && rb.velocity.y<=0)
+        if ((Input.GetKeyDown(KeyCode.Space) && groundContact) ||(Input.GetKeyDown(KeyCode.Space) && touchCube))// && rb.velocity.y<=0)
         {
             print("space");
             rb.AddForce(transform.up * (speed), ForceMode.Impulse);
@@ -98,8 +95,8 @@ public class CharacterController : MonoBehaviour {
 
 
 	void OnCollisionEnter(Collision other)
-	{
-		if (other.gameObject.tag == "cube") 
+    {
+        if (other.gameObject.tag == "cube") 
 		{
             groundContact = true;
 			touchCube = true;
@@ -113,7 +110,6 @@ public class CharacterController : MonoBehaviour {
         }
         if (other.gameObject.tag == "Ground")
         {
-            print("ground");
             groundContact = true;
             inContact = other.gameObject;
         }
@@ -153,7 +149,6 @@ public class CharacterController : MonoBehaviour {
         }
 		if (other.gameObject.tag == "cube") 
 		{
-            groundContact = false;
 			touchCube = false;
 			inContact = null;
         }
