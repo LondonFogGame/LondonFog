@@ -71,7 +71,7 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 0
     m_Settings:
-      focusDistance: 79.2
+      focusDistance: 133.42
       aperture: 3.2
       focalLength: 23
       useCameraFov: 0
@@ -83,12 +83,12 @@ MonoBehaviour:
       sampleCount: 10
       frameBlending: 0
   eyeAdaptation:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
-      lowPercent: 17.957043
-      highPercent: 95
+      lowPercent: 1
+      highPercent: 78.04295
       minLuminance: -48.72
-      maxLuminance: -4.22
+      maxLuminance: 37.72
       keyValue: 0.25
       dynamicKeyValue: 1
       adaptationType: 0
@@ -120,17 +120,17 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: -1.68
-        temperature: 3.1
-        tint: 0.8
+        postExposure: -1.07
+        temperature: 100
+        tint: 21.9
         hueShift: 1
-        saturation: 0.426
-        contrast: 0.99
+        saturation: 0
+        contrast: 1.253
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
         blue: {x: 0, y: 0, z: 1}
-        currentEditingChannel: 1
+        currentEditingChannel: 0
       colorWheels:
         mode: 1
         log:
@@ -288,17 +288,17 @@ MonoBehaviour:
   grain:
     m_Enabled: 0
     m_Settings:
-      colored: 1
-      intensity: 0.365
-      size: 1
-      luminanceContribution: 0.597
+      colored: 0
+      intensity: 0.21
+      size: 0.3
+      luminanceContribution: 1
   vignette:
     m_Enabled: 0
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 1
+      intensity: 0.477
       smoothness: 1
       roundness: 1
       mask: {fileID: 0}
