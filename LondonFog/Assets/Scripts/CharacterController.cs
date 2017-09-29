@@ -18,16 +18,15 @@ public class CharacterController : MonoBehaviour {
 
     public bool atGate = false;
 
+	public bool isJumping = false;
+
 	//public bool pushing = false;
 	private GameObject inContact;
 
     // Use this for initialization
     void Start () {
-<<<<<<< HEAD
         speed = 4.5f;
         sensitivity = 10f;
-=======
->>>>>>> origin/master
         rb = GetComponent<Rigidbody>();
        
     }
@@ -37,9 +36,10 @@ public class CharacterController : MonoBehaviour {
         
 
         //smooth jumping animation
-        if (Input.GetKeyDown(KeyCode.Space) && groundContact)// && rb.velocity.y<=0)
+		if (Input.GetKeyDown(KeyCode.Space) && groundContact && !isJumping)// && rb.velocity.y<=0)
         {
             print("space");
+			isJumping = true;
             rb.AddForce(transform.up * (speed), ForceMode.Impulse);
             
         }
@@ -103,6 +103,7 @@ public class CharacterController : MonoBehaviour {
 		{
             groundContact = true;
 			touchCube = true;
+			isJumping = false;
 			inContact = other.gameObject;
 		}
         if(other.gameObject.name == "GateKey")
@@ -114,8 +115,9 @@ public class CharacterController : MonoBehaviour {
         if (other.gameObject.tag == "Ground")
         {
             print("ground");
+			isJumping = false;
             groundContact = true;
-            inContact = other.gameObject;
+            //inContact = other.gameObject;
         }
         if (other.gameObject.name == "Gate")
         {
@@ -153,7 +155,10 @@ public class CharacterController : MonoBehaviour {
         }
 		if (other.gameObject.tag == "cube") 
 		{
-            groundContact = false;
+			if (isJumping) {
+				groundContact = false;
+			}
+            
 			touchCube = false;
 			inContact = null;
         }
@@ -166,7 +171,7 @@ public class CharacterController : MonoBehaviour {
         if (other.gameObject.tag == "Ground")
         {
             groundContact = false;
-            inContact = null;
+            //inContact = null;
         }
 
     }

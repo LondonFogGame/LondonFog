@@ -5,14 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - cube
-<<<<<<< HEAD
   - particles
   - LargePatch
   - SmallPatch
-=======
-  - Point
-  - Ground
->>>>>>> origin/master
   layers:
   - Default
   - TransparentFX
