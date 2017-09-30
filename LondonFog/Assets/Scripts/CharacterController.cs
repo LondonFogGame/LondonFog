@@ -23,6 +23,8 @@ public class CharacterController : MonoBehaviour {
 	//public bool pushing = false;
 	private GameObject inContact;
 
+	public Animator m_animator;
+
     // Use this for initialization
     void Start () {
         speed = 4.5f;
@@ -34,6 +36,10 @@ public class CharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
+
+		m_animator.SetBool("Grounded", groundContact);
+
+
 
         //smooth jumping animation
         if ((Input.GetKeyDown(KeyCode.Space) && groundContact) ||(Input.GetKeyDown(KeyCode.Space) && touchCube))// && rb.velocity.y<=0)
@@ -68,18 +74,30 @@ public class CharacterController : MonoBehaviour {
 		}
 			
         //Moves Forward and back along z axis                           //Up/Down
-        transform.Translate(-Vector3.forward * Time.deltaTime * Input.GetAxis("Vertical") * speed);
+        //transform.Translate(-Vector3.forward * Time.deltaTime * Input.GetAxis("Vertical") * speed);
+		transform.Translate(Vector3.forward * Time.deltaTime * Input.GetAxis("Vertical") * speed);
+
+
+
 
         //Moves Left and right along x Axis                               //Left/Right
-        transform.Translate(-Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * speed);
+        //transform.Translate(-Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * speed);
+		transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * speed);
+
+			m_animator.SetFloat ("MoveSpeed", (Input.GetAxis ("Vertical") * speed));
+
+
 
         transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivity, 0);
 
 
 		if (touchCube && interactKeyPressed) 
 		{
-			Vector3 res = (-Vector3.right * Time.deltaTime * Input.GetAxis ("Horizontal") * speed);
-			Vector3 res2 = (-Vector3.forward * Time.deltaTime * Input.GetAxis ("Vertical") * speed);
+			//Vector3 res = (-Vector3.right * Time.deltaTime * Input.GetAxis ("Horizontal") * speed);
+			//Vector3 res2 = (-Vector3.forward * Time.deltaTime * Input.GetAxis ("Vertical") * speed);
+			Vector3 res = (Vector3.right * Time.deltaTime * Input.GetAxis ("Horizontal") * speed);
+			Vector3 res2 = (Vector3.forward * Time.deltaTime * Input.GetAxis ("Vertical") * speed);
+
 			Vector3 otherPos = inContact.GetComponent<Rigidbody> ().position;
 
 			Vector3 res3 = res + res2;
