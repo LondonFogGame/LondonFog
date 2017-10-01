@@ -9,6 +9,8 @@ TagManager:
   - particles
   - LargePatch
   - SmallPatch
+  - Ground
+  - Deliver
   layers:
   - Default
   - TransparentFX

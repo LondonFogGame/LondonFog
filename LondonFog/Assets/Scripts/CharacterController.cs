@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour {
 
@@ -20,6 +21,9 @@ public class CharacterController : MonoBehaviour {
 
 	public bool isJumping = false;
 
+    public int newspaperCount;
+    public int deliveryCount;
+
 	//public bool pushing = false;
 	private GameObject inContact;
 
@@ -29,8 +33,7 @@ public class CharacterController : MonoBehaviour {
     void Start () {
         speed = 4.5f;
         sensitivity = 10f;
-        rb = GetComponent<Rigidbody>();
-       
+        rb = GetComponent<Rigidbody>();       
     }
 	
 	// Update is called once per frame
@@ -198,5 +201,15 @@ public class CharacterController : MonoBehaviour {
 
     }
 
-
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Deliver"))
+        {
+            newspaperCount--;
+            deliveryCount++;
+            GameObject.Find("NewspaperCount").GetComponent<Text>().text = newspaperCount.ToString();
+            GameObject.Find("DeliveryCount").GetComponent<Text>().text = deliveryCount.ToString();
+            other.gameObject.SetActive(false);            
+        }     
+    }
 }
