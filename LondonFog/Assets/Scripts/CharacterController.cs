@@ -23,6 +23,10 @@ public class CharacterController : MonoBehaviour {
 
     public int newspaperCount;
     public int deliveryCount;
+    public List<Point> deliverLocations;
+    public GameObject arrow;
+    public float dampling;
+    private int deliveryIndex = 0;
 
     public int health;
     public bool inFog = false;
@@ -37,7 +41,7 @@ public class CharacterController : MonoBehaviour {
         health = 5;
         speed = 4.5f;
         sensitivity = 10f;
-        rb = GetComponent<Rigidbody>();       
+        rb = GetComponent<Rigidbody>();    
     }
 	
 	// Update is called once per frame
@@ -120,7 +124,10 @@ public class CharacterController : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
             Cursor.lockState = CursorLockMode.Locked;
-        
+
+        //Points arrow in direction of delivery point
+        if(deliveryIndex < 3)
+            arrow.transform.rotation = Quaternion.FromToRotation(new Vector3(-1, 0, 0), deliverLocations[deliveryIndex].position - arrow.transform.position);
     }
 
     void OnParticleCollision(GameObject other)
@@ -225,7 +232,8 @@ public class CharacterController : MonoBehaviour {
             deliveryCount++;
             GameObject.Find("NewspaperCount").GetComponent<Text>().text = newspaperCount.ToString();
             GameObject.Find("DeliveryCount").GetComponent<Text>().text = deliveryCount.ToString();
-            other.gameObject.SetActive(false);            
+            other.gameObject.SetActive(false);
+            deliveryIndex++;          
         }     
     }
 }
