@@ -24,33 +24,36 @@ public class CharacterController : MonoBehaviour {
     public int newspaperCount;
     public int deliveryCount;
 
-	//public bool pushing = false;
-	private GameObject inContact;
+    public int health;
+    public bool inFog = false;
+    
+    //public bool pushing = false;
+    private GameObject inContact;
 
 	public Animator m_animator;
 
     // Use this for initialization
     void Start () {
+        health = 5;
         speed = 4.5f;
         sensitivity = 10f;
         rb = GetComponent<Rigidbody>();       
     }
 	
 	// Update is called once per frame
-	void Update () {
-        
+	void Update ()
+    {
 
 		m_animator.SetBool("Grounded", groundContact);
-
-
+        
 
         //smooth jumping animation
-        if ((Input.GetKeyDown(KeyCode.Space) && groundContact) ||(Input.GetKeyDown(KeyCode.Space) && touchCube))// && rb.velocity.y<=0)
+        //if ((Input.GetKeyDown(KeyCode.Space) && groundContact) ||(Input.GetKeyDown(KeyCode.Space) && touchCube))// && rb.velocity.y<=0)
 
 		if (Input.GetKeyDown(KeyCode.Space) && groundContact && !isJumping)// && rb.velocity.y<=0)
 
         {
-            print("space");
+            
 			isJumping = true;
             rb.AddForce(transform.up * (speed), ForceMode.Impulse);
             
@@ -120,8 +123,17 @@ public class CharacterController : MonoBehaviour {
         
     }
 
+    void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.tag == "fogGate")
+        {
+            print("fogggggged");
+            
+            inFog = true;
+        }
+    }
 
-	void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "cube") 
 		{
@@ -138,7 +150,6 @@ public class CharacterController : MonoBehaviour {
         }
         if (other.gameObject.tag == "Ground")
         {
-            print("ground");
 			isJumping = false;
 
             groundContact = true;
@@ -197,6 +208,11 @@ public class CharacterController : MonoBehaviour {
         {
             groundContact = false;
             //inContact = null;
+        }
+        if (other.gameObject.tag == "particles")
+        {
+            print("out");
+            inFog = false;
         }
 
     }

@@ -11,6 +11,7 @@ TagManager:
   - SmallPatch
   - Ground
   - Deliver
+  - fogGate
   layers:
   - Default
   - TransparentFX

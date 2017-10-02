@@ -26,8 +26,9 @@ public class triggerBoxTimer : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
+        
 		timer += Time.deltaTime;
-		if (timer > 1.0f) {
+		if (timer > 3.0f) {
 			vigScript.isHurting = true;
 		}
 	}

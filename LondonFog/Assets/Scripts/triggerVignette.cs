@@ -17,8 +17,9 @@ public class triggerVignette : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		Image[] arr = gameObject.GetComponentsInChildren<Image> ();
-		blackScreen = arr [1];
+        Image[] arr = gameObject.GetComponentsInChildren<Image>();
+        print(arr.Length);
+		blackScreen = arr[0];
 		col = blackScreen.color;
 		//float asdf = blackScreen.color[3];
 		col.a = 0.0f;
@@ -38,10 +39,14 @@ public class triggerVignette : MonoBehaviour
 //			countSecond = 0.0f;
 //		}
 //		countSecond += Time.deltaTime;
-		if (isHurting) {
-			col.a += (0.1f * Time.deltaTime);
+		if (isHurting)
+        {
+            print("changingCollor");
+			col.a = col.a + (0.1f * Time.deltaTime);
 			blackScreen.color = col;
-		} else if (blackScreen.color.a > 0.0f) {
+		}
+        else if (blackScreen.color.a > 0.0f)
+        {
 			col.a -= (0.2f * Time.deltaTime);
 			blackScreen.color = col;
 		}
