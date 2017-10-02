@@ -26,16 +26,19 @@ public class triggerBoxTimer : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-        
+		if (other.gameObject.tag.Equals("Player")){
 		timer += Time.deltaTime;
-		if (timer > 3.0f) {
-			vigScript.isHurting = true;
+			if (timer > 3.0f) {
+				vigScript.isHurting = true;
+			}
 		}
 	}
 
 	void OnTriggerExit(Collider other)
 	{
-		vigScript.isHurting = false;
+		if (other.gameObject.tag.Equals ("Player")) {
+			vigScript.isHurting = false;
+		}
 	}
 
 }

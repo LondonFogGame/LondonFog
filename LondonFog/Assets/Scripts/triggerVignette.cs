@@ -47,7 +47,7 @@ public class triggerVignette : MonoBehaviour
 		}
         else if (blackScreen.color.a > 0.0f)
         {
-			col.a -= (0.2f * Time.deltaTime);
+			col.a -= (0.4f * Time.deltaTime);
 			blackScreen.color = col;
 		}
 			
